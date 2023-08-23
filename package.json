@@ -5,7 +5,7 @@
   "scripts": {
     "nodemon": "nodemon --expose-gc ./bin/www",
     "dev-win": "set DEBUG=express:* & nodemon  --expose-gc./bin/www",
-    "dev": "DEBUG=express:* nodemon --expose-gc ./bin/www",
+    "dev": "set DEBUG=express:* & nodemon  --expose-gc./bin/www",
     "start": "node --expose-gc ./bin/www",
     "test": "jest --forceExit --detectOpenHandles --runInBand"
   },
@@ -37,6 +37,8 @@
     "hashids": "^1.2.2",
     "http-errors": "~1.6.2",
     "jest": "^27.0.4",
+    "joi": "^17.9.2",
+    "joy": "^0.1.1",
     "json5": "^2.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.12",
@@ -50,5 +52,8 @@
     "winston": "^3.2.1",
     "xlsx": "^0.16.9",
     "xlsx-populate": "^1.21.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.2"
   }
 }

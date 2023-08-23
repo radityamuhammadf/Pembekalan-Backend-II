@@ -1,0 +1,78 @@
+TESTNG TESTING BE
+# POST
+
+curl --location 'localhost:10000/api/v1/task' --request POST \
+--header 'Content-Type: application/json' \
+--data '{
+    "item": "Task 1"
+}'
+
+
+# PUT
+curl --location 'localhost:10000/api/v1/task' --request PUT \
+--header 'Content-Type: application/json' \
+--data '{
+    "id":1,
+    "item": "Task 2"
+}'
+
+# GET
+curl --location 'localhost:10000/api/v1/task'
+
+# DELETE
+curl --location --request DELETE 'localhost:10000/api/v1/task' \
+--header 'Content-Type: application/json' \
+--data '{
+    "id": 12
+}'
+
+
+
+
+SCRIPT JSON JSDOC
+{
+  "source": {
+    "include": ["src"],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  },
+  "opts": {
+    "recurse": true,
+    "destination": "./docs/"
+  }
+}
+
+
+SCRIPT UNTUK  PM2
+{
+        "apps": [{
+                "name": "todo-list",
+                "cwd": "./todo-list"
+                "script": "./bin/www",
+                "node_args": "--expose-gc",
+                "watch": "./",
+                "ignore_watch": [
+                        "./app.sock",
+                        "./public",
+                        "./files",
+                        "./fileExcel",
+                        "./fileExcelOrder",
+                        "./tmp",
+                        "./fileUpload",
+                        "./node_modules",
+                        "./.git"
+                 ],
+                "log_date_format": "YYYY-MM-DD HH:mm Z",
+                "exec_mode": "cluster",
+                "instances": "1",
+                "max_memory_restart": "512M",
+                "env": {
+                        "PORT": "10000"
+                }
+  }]
+}
