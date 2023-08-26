@@ -10,18 +10,18 @@ router.post('/', async function (req, res, next) {
 });
 //update
 router.put('/', async function (req, res, next) {
-    const addTask = await m$task.update(req.body)
-    helper.sendResponse(res, addTask);
+    const updateTask = await m$task.update(req.body)
+    helper.sendResponse(res, updateTask);
 });
 //delete
 router.delete('/', async function (req, res, next) {
-    const addTask = await m$task.remove(req.body.id)
-    helper.sendResponse(res, addTask);
+    const removeTask = await m$task.remove(req.body.id)
+    helper.sendResponse(res, removeTask);
 });
 //read
 router.get('/', async function (req, res, next) {
-    const addTask = await m$task.get()
-    helper.sendResponse(res, addTask);
+    const readDB = await m$task.read()
+    helper.sendResponse(res, readDB);
 });
 
 module.exports = router;
